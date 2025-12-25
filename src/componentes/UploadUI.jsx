@@ -1,4 +1,4 @@
-// UploadUI.jsx - A casca visual completa
+// UploadUI.jsx - interface do usuario
 import React from 'react';
 import './UploadUI.css';
 
@@ -47,7 +47,7 @@ const UploadUI = ({ files, onFileSelect, onUpload, onClear, uploadStatus }) => {
             <main className="upload-main">
                 <div className="container">
                     <div className="title-section">
-                        <h1>Upload de Documentos</h1>
+                        <h2>Upload de Documentos</h2>
                         <p>Selecione arquivos do tipo TXT.</p>
                     </div>
 
@@ -102,7 +102,7 @@ const UploadUI = ({ files, onFileSelect, onUpload, onClear, uploadStatus }) => {
                             <span className="material-symbols-outlined" style={{ color: '#2b8a3e', fontSize: '1.5rem' }}>check_circle</span>
                             <div className="success-text">
                                 <h3>Upload realizado com sucesso!</h3>
-                                <p>Seus documentos foram enviados. Um e-mail de confirmação foi enviado.</p>
+                                <p>Seus documentos foram enviados para processamento.</p>
                             </div>
                         </div>
                     )}

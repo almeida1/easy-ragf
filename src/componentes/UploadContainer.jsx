@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Opcional, mas comum. Usarei XHR para progresso nativo se preferir, ou Axios.
+
 import UploadUI from './UploadUI';
 
 const API_URL = "http://localhost:8080/documents/upload";
@@ -21,38 +21,28 @@ const UploadContainer = () => {
         setUploadStatus('idle');
     };
 
-    const uploadSingleFile = (fileObj) => {
-        return new Promise((resolve, reject) => {
-            const formData = new FormData();
-            formData.append('file', fileObj.file);
+    const uploadSingleFile = async (fileObj) => {
+        const formData = new FormData();
+        formData.append('file', fileObj.file);
 
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', API_URL, true);
+        updateFileState(fileObj.id, { status: 'uploading', progress: 0 });
 
-            xhr.upload.onprogress = (event) => {
-                if (event.lengthComputable) {
-                    const percent = Math.round((event.loaded / event.total) * 100);
-                    updateFileState(fileObj.id, { progress: percent, status: 'uploading' });
-                }
-            };
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                body: formData,
+            });
 
-            xhr.onload = () => {
-                if (xhr.status === 200 || xhr.status === 201) {
-                    updateFileState(fileObj.id, { status: 'success', progress: 100 });
-                    resolve();
-                } else {
-                    updateFileState(fileObj.id, { status: 'error' });
-                    reject();
-                }
-            };
-
-            xhr.onerror = () => {
+            if (response.ok) {
+                updateFileState(fileObj.id, { status: 'success', progress: 100 });
+            } else {
                 updateFileState(fileObj.id, { status: 'error' });
-                reject();
-            };
-
-            xhr.send(formData);
-        });
+                throw new Error('Upload failed');
+            }
+        } catch (error) {
+            updateFileState(fileObj.id, { status: 'error' });
+            throw error;
+        }
     };
 
     const updateFileState = (id, updates) => {
