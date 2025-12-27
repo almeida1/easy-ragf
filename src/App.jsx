@@ -3,7 +3,7 @@ import UploadContainer from './componentes/UploadContainer'
 function App() {
   return (
     <div>
-      <h3>Sistema Integrado de Gestão</h3>
+      <h3 className="app-title">Sistema Integrado de Gestão</h3>
       <UploadContainer />
     </div>
   )

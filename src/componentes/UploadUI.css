@@ -71,12 +71,12 @@
     /* approx 900px */
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .title-section h1 {
-    font-size: 2.5rem;
-    font-weight: 900;
+    font-size: 2rem;
+    font-weight: 800;
     margin-bottom: 0.5rem;
     line-height: 1.2;
 }
@@ -197,6 +197,41 @@
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.file-items-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.file-items-wrapper::-webkit-scrollbar-track {
+    background: #f1f3f5;
+    border-radius: 3px;
+}
+
+.file-items-wrapper::-webkit-scrollbar-thumb {
+    background: #ced4da;
+    border-radius: 3px;
+}
+
+.file-items-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #adb5bd;
+}
+
+@media (prefers-color-scheme: dark) {
+    .file-items-wrapper::-webkit-scrollbar-track {
+        background: #2a2a2a;
+    }
+
+    .file-items-wrapper::-webkit-scrollbar-thumb {
+        background: #444;
+    }
+
+    .file-items-wrapper::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
 }
 
 .file-item {
@@ -370,21 +405,39 @@
 }
 
 /* Status Message */
+/* Status Message */
 .status-message {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    padding: 1.25rem;
+    padding: 1rem 1.5rem;
     border-radius: 0.75rem;
     background-color: #ebfbee;
     border: 1px solid #d3f9d8;
-    animation: fadeIn 0.5s ease-out;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    min-width: 300px;
 }
 
 @media (prefers-color-scheme: dark) {
     .status-message {
-        background-color: rgba(43, 138, 62, 0.2);
-        border-color: rgba(43, 138, 62, 0.3);
+        background-color: #1b4226;
+        /* Darker green background for dark mode */
+        border-color: #2b8a3e;
+        color: #e6fcf5;
+    }
+
+    .success-text h3 {
+        color: #69db7c;
+    }
+
+    .success-text p {
+        color: #b2f2bb;
     }
 }
 
@@ -401,15 +454,15 @@
     color: #2f9e44;
 }
 
-@keyframes fadeIn {
+@keyframes slideUpFade {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translate(-50%, 20px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate(-50%, 0);
     }
 }
 

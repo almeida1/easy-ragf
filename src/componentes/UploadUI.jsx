@@ -47,7 +47,7 @@ const UploadUI = ({ files, onFileSelect, onUpload, onClear, uploadStatus }) => {
             <main className="upload-main">
                 <div className="container">
                     <div className="title-section">
-                        <h2>Upload de Documentos</h2>
+                        <h3>Upload de Documentos</h3>
                         <p>Selecione arquivos do tipo TXT.</p>
                     </div>
 
@@ -87,7 +87,7 @@ const UploadUI = ({ files, onFileSelect, onUpload, onClear, uploadStatus }) => {
                             </button>
                             <button
                                 onClick={onUpload}
-                                disabled={files.length === 0 || files.every(f => f.status === 'success')}
+                                disabled={files.length === 0 || (uploadStatus !== 'done' && files.every(f => f.status === 'success'))}
                                 className="btn-upload"
                             >
                                 <span>{uploadStatus === 'done' ? 'Novo Upload' : 'Enviar Documentos'}</span>
