@@ -58,17 +58,12 @@ const UploadUI = ({ files, onFileSelect, onUpload, onClear, uploadStatus }) => {
             <header className="upload-header">
                 <div className="brand">
                     <span className="material-symbols-outlined" style={{ fontSize: '2rem' }}>cloud_upload</span>
-                    <h2>DocUploader</h2>
+                    <h2>Upload de Documentos</h2>
                 </div>
             </header>
 
             <main className="upload-main">
                 <div className="container">
-                    <div className="title-section">
-                        <h3>Upload de Documentos</h3>
-                        <p>Selecione arquivos do tipo TXT.</p>
-                    </div>
-
                     <div className="upload-card">
                         {/* Dropzone */}
                         <div className="dropzone-container">
