@@ -34,8 +34,8 @@ const ChatUI = ({ messages, input, setInput, onSendMessage, isLoading }) => {
                     {messages.length === 0 ? (
                         <div className="empty-state">
                             <span className="material-symbols-outlined">forum</span>
-                            <h3>Comece uma conversa</h3>
-                            <p>Faça perguntas sobre os documentos que você enviou.</p>
+                            <h3>Inicie uma conversa</h3>
+                            <p>As perguntas sobre os documentos serão respondidas aqui.</p>
                         </div>
                     ) : (
                         messages.map((msg, index) => (
