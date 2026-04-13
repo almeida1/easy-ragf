@@ -25,8 +25,8 @@ const ChatUI = ({ messages, input, setInput, onSendMessage, isLoading }) => {
                         <span className="material-symbols-outlined">psychology</span>
                     </div>
                     <div>
-                        <h3>Assistente RAG</h3>
-                        <p>Sempre pronto para ajudar com seus documentos</p>
+                        <h3>Faça perguntas considerando a documentação fornecida</h3>
+                        <p>O histórico da conversa será perdido ao fechar a página  </p>
                     </div>
                 </header>
 
@@ -44,7 +44,7 @@ const ChatUI = ({ messages, input, setInput, onSendMessage, isLoading }) => {
                             </div>
                         ))
                     )}
-                    
+
                     {isLoading && (
                         <div className="message-bubble bot">
                             <div className="typing-indicator">
@@ -67,8 +67,8 @@ const ChatUI = ({ messages, input, setInput, onSendMessage, isLoading }) => {
                             onChange={(e) => setInput(e.target.value)}
                             disabled={isLoading}
                         />
-                        <button 
-                            type="submit" 
+                        <button
+                            type="submit"
                             className="btn-send"
                             disabled={!input.trim() || isLoading}
                         >

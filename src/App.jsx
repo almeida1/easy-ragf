@@ -11,7 +11,7 @@ function App() {
       <nav className="app-nav">
         <div className="nav-brand">
           <span className="material-symbols-outlined">dataset</span>
-          <h1>SIGVS - Chat de Consulta</h1>
+          <h1>SIGVS - Assistente de Consulta</h1>
         </div>
         <div className="nav-links">
           <button
