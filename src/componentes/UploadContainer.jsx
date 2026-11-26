@@ -40,7 +40,7 @@ const UploadContainer = () => {
                 try {
                     const errData = await response.json();
                     errorMessage = errData.error || errData.message || errData.detail || errorMessage;
-                } catch (e) {
+                } catch (_e) {
                     const text = await response.text();
                     if (text) errorMessage = text;
                 }
@@ -70,7 +70,7 @@ const UploadContainer = () => {
         try {
             await Promise.all(pendingFiles.map(f => uploadSingleFile(f)));
             setUploadStatus('done');
-        } catch (error) {
+        } catch (_error) {
             console.error("Erro no upload de alguns arquivos");
             setUploadStatus('idle');
         }
